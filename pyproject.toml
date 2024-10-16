@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "django-rest-udemy(escola)"
+version = "0.1.0"
+description = "Project for a Udemy Course on Django Rest Framework"
+authors = ["Rodrigo Almeida <c.almeidarodrigo@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
