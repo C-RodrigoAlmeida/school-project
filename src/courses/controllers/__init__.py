@@ -1,0 +1,2 @@
+from .course_controller import CourseAPIView
+from .rating_controller import RatingAPIView

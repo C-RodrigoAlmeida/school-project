@@ -8,10 +8,8 @@ class RatingSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "email": {"write_only": True}
         }
-
         model = Rating
-
-        fields = (
+        fields = [
             "id",
             "course",
             "name",
@@ -21,4 +19,4 @@ class RatingSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "deleted_at"
-        )
+        ]

@@ -1,0 +1,2 @@
+from .course_serializer import CourseSerializer
+from .rating_serializer import RatingSerializer
