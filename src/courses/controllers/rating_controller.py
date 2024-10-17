@@ -1,12 +1,14 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics
 
-from src.courses.serializers import RatingSerializer
 from src.courses.models import Rating
+from src.courses.serializers import RatingSerializer
 
-class RatingAPIView(APIView):
-    def get(self, request):
-        return Response(RatingSerializer(
-            Rating.objects.all(),
-            many=True
-        ).data)
+class RatingBaseView:
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+class RatingsAPIView(generics.ListCreateAPIView, RatingBaseView):
+    pass
+
+class RatingAPIView(generics.RetrieveDestroyAPIView, RatingBaseView):
+    pass

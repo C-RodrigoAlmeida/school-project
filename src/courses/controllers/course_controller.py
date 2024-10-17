@@ -1,12 +1,17 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics
 
 from src.courses.models import Course
 from src.courses.serializers import CourseSerializer
 
-class CourseAPIView(APIView):
-    def get(self, request):
-        return Response(CourseSerializer(
-            Course.objects.all(),
-            many=True
-        ).data)
+class BaseCourseView:
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+    class Meta:
+        abstract = True
+
+class CoursesAPIView(generics.ListCreateAPIView, BaseCourseView):
+    pass
+
+class CourseAPIView(generics.RetrieveDestroyAPIView, BaseCourseView):
+    pass
