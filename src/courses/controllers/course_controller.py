@@ -10,8 +10,8 @@ class BaseCourseView:
     class Meta:
         abstract = True
 
-class CoursesAPIView(generics.ListCreateAPIView, BaseCourseView):
+class CoursesAPIView(BaseCourseView, generics.ListCreateAPIView):
     pass
 
-class CourseAPIView(generics.RetrieveDestroyAPIView, BaseCourseView):
+class CourseAPIView(BaseCourseView, generics.RetrieveDestroyAPIView):
     pass

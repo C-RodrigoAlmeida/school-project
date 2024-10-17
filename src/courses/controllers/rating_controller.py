@@ -7,8 +7,8 @@ class RatingBaseView:
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
 
-class RatingsAPIView(generics.ListCreateAPIView, RatingBaseView):
+class RatingsAPIView(RatingBaseView, generics.ListCreateAPIView):
     pass
 
-class RatingAPIView(generics.RetrieveDestroyAPIView, RatingBaseView):
+class RatingAPIView(RatingBaseView, generics.RetrieveDestroyAPIView):
     pass
