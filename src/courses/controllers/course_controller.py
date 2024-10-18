@@ -4,7 +4,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from src.courses.models import Course
+from src.courses.models import Course, Rating
 from src.courses.serializers import CourseSerializer, RatingSerializer
 
 class BaseCourseView:
@@ -31,4 +31,7 @@ API V2
 class CoursesViewSet(BaseCourseView, viewsets.ModelViewSet):
     @action(detail=True, methods=["get"])
     def ratings(self, request, pk=None):
-        return Response(RatingSerializer(self.get_object().ratings.all(), many=True).data)
+        queryset = self.get_object().ratings.all()
+        page = self.paginate_queryset(queryset)
+        return (self.get_paginated_response(RatingSerializer(page, many=True).data) if page is not None
+            else Response(RatingSerializer(queryset, many=True).data))

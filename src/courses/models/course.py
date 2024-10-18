@@ -8,6 +8,7 @@ class Course(BaseModel):
     class Meta:
         verbose_name = 'Course'
         verbose_name_plural = 'Courses'
+        ordering = ['-id']
 
     def __str__(self):
         return self.title

@@ -13,6 +13,7 @@ class Rating(BaseModel):
         verbose_name = "Rating"
         verbose_name_plural = "Ratings"
         unique_together = ['email',  'course']
+        ordering = ['-id']
 
     def __str__(self) -> str:
         return f'{self.name} rated the course {self.course} as {self.rating}'
