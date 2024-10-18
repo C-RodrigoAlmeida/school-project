@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "django_filters",
     "rest_framework",
+    "rest_framework.authtoken",
 
     "src.core",
     "src.courses",
@@ -136,6 +137,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
