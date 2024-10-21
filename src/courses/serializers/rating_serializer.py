@@ -20,3 +20,8 @@ class RatingSerializer(serializers.ModelSerializer):
             "updated_at",
             "deleted_at"
         ]
+
+    def validate_rating(self, value):
+        if value >= 0 and value <= 5: return value
+        
+        raise serializers.ValidationError('The rating has a to be a value between 0 and 5')
